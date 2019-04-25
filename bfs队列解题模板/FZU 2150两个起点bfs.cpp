@@ -1,11 +1,11 @@
-#include <iostream>
-#include <algorithm>
-#include <string>
-#include <cstring>
-#include <cmath>
-#include <cstdio>
-#include <queue>
-#include <vector>
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<cstring>
+#include<cmath>
+#include<cstdio>
+#include<queue>
+#include<vector>
 using namespace std;
 
 #define inf 0x3f3f3f3f
@@ -20,17 +20,17 @@ struct node{
 };//分别储存横坐标，纵坐标，还有当前的时间
 vector<node> grass;
 
-bool check (int x,int y){
+bool check(int x,int y){
     if (!vis[x][y]&&grid[x][y]=='#'&&x>=0&&x<n&&y>=0&&y<m)
     return true;
     else
     return false;
 }//判断这个点是否可以走，注意这里的判断方式是只判断正确的，这个值得学习
 
-bool judge (){
-    for (int i=0;i<n;++i){
-        for (int j=0;j<m;++j){
-            if (grid[i][j]=='#'&&!vis[i][j])
+bool judge(){
+    for(int i=0;i<n;++i){
+        for(int j=0;j<m;++j){
+            if(grid[i][j]=='#'&&!vis[i][j])
             return false;
         }
     }
@@ -43,38 +43,38 @@ void init(){
 }//初始化
 
 //所谓的两个点bfs，其实就是在初始化的时候放入两个点就可以了，其他和平常的bfs几乎都一样
-int bfs (node n1,node n2){
+int bfs(node n1,node n2){
     queue<node> q;
     memset(vis,false,sizeof vis);
     while (!q.empty()) q.pop();
     q.push(n1);
     q.push(n2);
     int depthest=0;//将要输出的时间值
-    while (!q.empty()){
+    while(!q.empty()){
         node now=q.front();
         q.pop();
-        if (vis[now.x][now.y]) continue;//节省时间
+        if(vis[now.x][now.y]) continue;//节省时间
         vis[now.x][now.y]=true;//出队列才会给判断vis
         depthest=now.depth;//更新时间
-        if (check(now.x-1,now.y)){
+        if(check(now.x-1,now.y)){
             node nxt=now;
             nxt.x--;
             nxt.depth++;
             q.push(nxt);
         }//这些if可以更改一下，用kuangbin的函数
-        if (check(now.x+1,now.y)){
+        if(check(now.x+1,now.y)){
             node nxt=now;
             nxt.x++;
             nxt.depth++;
             q.push(nxt);
         }
-        if (check(now.x,now.y-1)){
+        if(check(now.x,now.y-1)){
             node nxt=now;
             nxt.y--;
             nxt.depth++;
             q.push(nxt);
         }
-        if (check(now.x,now.y+1)){
+        if(check(now.x,now.y+1)){
             node nxt=now;
             nxt.y++;
             nxt.depth++;
@@ -95,7 +95,7 @@ int main(){
             scanf("%s",grid[i]);
         for(int i=0;i<n;++i){
             for(int j=0;j<m;++j){
-                if (grid[i][j]=='#'){
+                if(grid[i][j]=='#'){
                     node g;
                     g.x=i;
                     g.y=j;
