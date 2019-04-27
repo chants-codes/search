@@ -53,7 +53,7 @@ int bfs(node n1,node n2){
     while(!q.empty()){
         node now=q.front();
         q.pop();
-        if(vis[now.x][now.y]) continue;//节省时间
+        if(vis[now.x][now.y]) continue;//节省时间，注意这句话的使用方式!
         vis[now.x][now.y]=true;//出队列才会给判断vis
         depthest=now.depth;//更新时间
         if(check(now.x-1,now.y)){
