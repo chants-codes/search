@@ -5,14 +5,14 @@ int n;
 long long bfs(){
      queue<long long> p;
      while(!p.empty()) p.pop();
-     p.push(1);//°Ñ1·ÅÈë¶ÓÁĞ
+     p.push(1);//æŠŠ1æ”¾å…¥é˜Ÿåˆ—
      while(1){
         long long sum=p.front();
         if(sum%n==0) return sum;
         p.pop();
         p.push(10*sum);
         p.push(10*sum+1);
-        //ÉÏÁ½¾ä°ÑËùÓĞ°üº¬1ºÍ0µÄ¸÷¸öÊ®½øÖÆÊıÈ«²¿·Åµ½¶ÓÁĞÀïÃæÁË
+        //ä¸Šä¸¤å¥æŠŠæ‰€æœ‰åŒ…å«1å’Œ0çš„å„ä¸ªåè¿›åˆ¶æ•°å…¨éƒ¨æ”¾åˆ°é˜Ÿåˆ—é‡Œé¢äº†
      }
 }
 int main(){
